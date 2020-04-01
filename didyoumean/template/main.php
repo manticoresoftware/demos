@@ -61,7 +61,7 @@
         <?php endforeach; ?>
         <div class="col-md-12">
             <?php if ($total_found > $offset): ?>
-                <div class="span9"><?php include __DIR__.'/common/template/paginator.php'; ?></div>
+                <div class="span9"><?php include getcwd().'/common/template/paginator.php'; ?></div>
             <?php endif; ?>
             <?php elseif (isset($_GET['query']) && $_GET['query'] != ''): ?>
                 <p class="lead">Nothing found!</p>

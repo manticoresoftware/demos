@@ -21,7 +21,7 @@
                     <div class="row  m-1">
                         <div class="card w-100">
 
-                            <div class="card-header"><?php echo $faceted_name[$attr]; ?></div>
+                            <div class="card-header"><?php echo $faceted_name[$attr]??''; ?></div>
                             <div class="card-body">
 
                                 <?php foreach ($facet as $item): ?>
@@ -83,7 +83,7 @@
                 <div class="row">
                     <?php if ($total_found > $offset): ?>
                         <div class="col-sm-12">
-                            <?php include 'template/paginator.php'; ?>
+                            <?php include getcwd().'/common/template/paginator.php'; ?>
                         </div>
                     <?php endif; ?>
                 </div>
