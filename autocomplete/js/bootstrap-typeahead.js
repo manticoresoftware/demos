@@ -542,7 +542,7 @@
              * @author Simone Sacchi
              * @version 2018/01/18
              */
-        	console.log('test1');
+
             if (e.keyCode === 17) { // ctrl
                 return;
             }
@@ -559,18 +559,15 @@
             if (this.suppressKeyPressRepeat) {
                 return;
             }
-            console.log('test2');
             this.move(e);
         },
 
         input: function (e) {
             // This is a fixed for IE10/11 that fires the input event when a placehoder is changed
             // (https://connect.microsoft.com/IE/feedback/details/810538/ie-11-fires-input-event-on-focus)
-        	console.log('test3');
             var currentValue = this.$element.val() || this.$element.text();
             if (this.value !== currentValue) {
                 this.value = currentValue;
-                console.log('test4');
                 this.lookup();
             }
         },
