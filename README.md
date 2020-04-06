@@ -3,13 +3,13 @@
 
 This repository contains the source code used in several courses at https://play.manticoresearch.com/.
 
-- autocomplete - https://play.manticoresearch.com/simpleautocomplete/
-- highlight - https://play.manticoresearch.com/highlighting/
-- didyoumean - https://play.manticoresearch.com/didyoumean/
-- mlt - https://play.manticoresearch.com/mlt/
-- faceting - https://play.manticoresearch.com/faceting/
+- Search query autocomplete - https://play.manticoresearch.com/simpleautocomplete/
+- Search results highlighting - https://play.manticoresearch.com/highlighting/
+- Search query autocorrect - https://play.manticoresearch.com/didyoumean/
+- More like this search result - https://play.manticoresearch.com/mlt/
+- Faceted search - https://play.manticoresearch.com/faceting/
 
-Autocomplete, Didyoumean and Faceting samples use a small collection index about movies (https://data.world/data-society/imdb-5000-movie-dataset).
+Autocomplete, Autocorrect and Faceted search samples use a small movies data collection (https://data.world/data-society/imdb-5000-movie-dataset).
 To create the index check the course about importing CSV files - https://play.manticoresearch.com/csv/.
 
 MLT (more like this) uses a news collection from https://www.kaggle.com/snapcrack/all-the-news.
