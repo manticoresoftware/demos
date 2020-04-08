@@ -1,0 +1,33 @@
+version: '2.2'
+
+services:
+  # Manticore Search is a small yet powerful database for search with awesome full-text search capabilities
+  manticore:
+    # we'll just use their official image
+    image: manticoresearch/manticore:3.4.0
+    # and create a volume for data persistency
+    volumes:
+      - ./data:/var/lib/manticore
+  # we also need php
+  php:
+    # which we'll build ourselves from Dockerfile
+    build: php
+    # no point to run the php container before manticore, hence the dependency
+    depends_on: 
+      - manticore
+    # the command below just runs wget to start crawling the domain passed in the env. variable
+    # and lets the wget output flow to "php load.php" which insert into into Manticore Search
+    command: /bin/bash -c 'wget -nv -r -H -nd --connect-timeout=2 --read-timeout=10 --tries=1 --follow-tags=a -R "*.css*,*.js*,*.png,*.jpg,*.gif" "http://${domain}/" --domains=${domain} 2>&1 | php load.php'
+  # let's also add a tiny php script to visualize what we have in Manticore
+  web:
+    # we'll use php 7.2. + Apache for that
+    image: php:7.2-apache
+    # it also depends on Manticore
+    depends_on:
+      - manticore
+    # let's bind it to 8082 port locally
+    ports:
+      - 8082:80
+    # we'll mirror folder "www" to /var/www/html/ inside the web server container so ./www/index.php will be the front page
+    volumes:
+      - ./www/:/var/www/html/
