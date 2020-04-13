@@ -20,7 +20,7 @@ $faceted_expr = array(
 
 $faceted_name = array(
     "title_year" => "Year",
-    "content_rating[]" => "Rating",
+    "content_rating" => "Rating",
     "director_name" => "Director's Name",
     "imdb_score" => "IMDB score"
 );
@@ -36,11 +36,7 @@ foreach ($faceted as $f) {
                 $filters[] = "$f BETWEEN " . $_GET[$f] . ' AND ' . ($_GET[$f] + 0.9);
                 break;
             case 'content_rating':
-                $vals = [];
-                foreach ($_GET['content_rating'] as $get) {
-                    $vals[] = $conn->quote($get);
-                }
-                $filters[] = "$f IN(" . implode(',', $vals) . ")";
+                $filters[] = "$f = " . $conn->quote($_GET[$f]);
                 break;
             default:
                 $filters[] = "$f = " . $conn->quote($_GET[$f]);

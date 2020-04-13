@@ -28,16 +28,7 @@
                                     <?php if ($item[$faceted_map[$attr]] != '' || $item[$faceted_map[$attr]] != 0): ?>
 
                                         <div class="form-check">
-                                            <?php if ($attr == 'content_rating'): ?>
-
-                                                <input type="checkbox" class="form-check-input"
-                                                       name="<?php echo $attr; ?>[]" <?php echo (isset($_GET[$attr]) && in_array($item[$faceted_map[$attr]], $_GET[$attr])) ? 'checked' : ''; ?>
-                                                       value="<?php echo $item[$faceted_map[$attr]]; ?>">
-                                                <label class="form-check-label">
-                                                    <?php echo $item[$faceted_map[$attr]]; ?>
-                                                    (<?php echo $item['count(*)']; ?>) </label>
-                                            <?php else: ?>
-                                                <input type="radio" class="form-check-input"
+                                                    <input type="radio" class="form-check-input"
                                                        name="<?php echo $attr; ?>" <?php echo (isset($_GET[$attr]) && $_GET[$attr] == $item[$faceted_map[$attr]]) ? 'checked' : ''; ?>
                                                        value="<?php echo $item[$faceted_map[$attr]]; ?>">
                                                 <label class="form-check-label">
@@ -48,7 +39,7 @@
                                                     } else {
                                                         echo $item[$faceted_map[$attr]];
                                                     } ?> (<?php echo $item['count(*)']; ?>) </label>
-                                            <?php endif; ?>
+
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
