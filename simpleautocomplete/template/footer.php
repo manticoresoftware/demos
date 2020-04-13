@@ -1,5 +1,5 @@
 
-<script src="/autocomplete/js/bootstrap-typeahead.js"></script>
+<script src="/simpleautocomplete/js/bootstrap-typeahead.js"></script>
 <script>
 
 $(document).ready(function(){
