@@ -22,5 +22,5 @@ while (!feof($f)) { # reading from STDIN while there's something
     if (preg_match('/<title>(?<title>.*?)<\/title>/is', $content, $content_match)) $title = trim(html_entity_decode($content_match['title'])); # here we are doing a simple HTML page parsing to get <title> from that
     else continue; # we are not interested in pages without a title
     echo "{$match['path']}: $title {$match['url']} ".strlen($content)." bytes\n"; # let's say something about our progress
-    $manticore->query("REPLACE INTO rt (id,title,url,body) VALUES(".crc32($title).",'".$manticore->escape_string($title)."','".$manticore->escape_string($match['url'])."','".$manticore->escape_string($content)."')"); # and we are finally putting the contents to Manticore. We use crc32(title) as a document ID to avoid duplicates.
+    $manticore->query("REPLACE INTO rt (id,title,url,body) VALUES(".crc32($match['url']).",'".$manticore->escape_string($title)."','".$manticore->escape_string($match['url'])."','".$manticore->escape_string($content)."')"); # and we are finally putting the contents to Manticore. We use crc32($match['url']) as a document ID to avoid duplicates.
 } # and we are going back to the next page wget reports as downloaded
